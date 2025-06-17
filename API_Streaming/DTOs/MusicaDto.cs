@@ -8,6 +8,6 @@ namespace API_Streaming.DTOs
         public string Titulo { get; set; }
         public int Duracao { get; set; }
         public Guid Genero { get; set; }
-        public List<int> ArtistasIds { get; set; } = new List<int>();
+        public List<Guid> ArtistasIds { get; set; } = new List<Guid>();
     }
 }

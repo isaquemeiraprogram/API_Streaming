@@ -5,7 +5,7 @@ namespace API_Streaming.Models
 {
     public class Artista
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Genero { get; set; }
         public string Biografia { get; set; }

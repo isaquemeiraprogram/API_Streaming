@@ -13,10 +13,5 @@ namespace API_Streaming.Models
         public Genero Genero { get; set; }
         public ICollection<Artista> Artistas { get; set; } = new List<Artista>();
 
-        public Musica()
-        {
-            
-        }
-
     }
 }
