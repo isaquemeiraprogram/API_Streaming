@@ -8,18 +8,18 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace API_Streaming.Services
 {
-    public class MusicaServices
+    public class MusicaService
     {
         private readonly DataBase _context;
 
-        public MusicaServices(DataBase _context)
+        public MusicaService(DataBase _context)
         {
             this._context = _context;
         }
 
         public async Task<List<Musica>> ObterTodasMusicas()
         {
-            return (await _context.Musicas.Include(m => m.Genero).Include(m => m.Artistas).ToListAsync());
+            return await _context.Musicas.Include(m => m.Genero).Include(m => m.Artistas).ToListAsync();
         }
 
         public async Task<ActionResult<Musica>> ObterMusica(Guid id)

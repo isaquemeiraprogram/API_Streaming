@@ -14,15 +14,15 @@ namespace API_Streaming.Controllers
     [ApiController]
     public class MusicaController : ControllerBase
     {
-        private readonly MusicaServices _musicServices;
+        private readonly MusicaService _musicServices;
 
-        public MusicaController(MusicaServices _musicServices)
+        public MusicaController(MusicaService _musicServices)
         {
             this._musicServices = _musicServices;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Musica>>> GetMusic()
+        public async Task<List<Musica>> ObterTodasMusicas()
         {
             return await _musicServices.ObterTodasMusicas();
         }
