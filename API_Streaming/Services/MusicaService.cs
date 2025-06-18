@@ -46,6 +46,7 @@ namespace API_Streaming.Services
 
             Musica musica = new Musica()
             {
+                Id = Guid.NewGuid(),
                 Titulo = Dto.Titulo,
                 Duracao = Dto.Duracao,
                 Genero = genero,
@@ -61,7 +62,7 @@ namespace API_Streaming.Services
         {
             Musica musica = await _context.Musicas.FindAsync(id);
 
-            Genero genero = await _context.Generos.FindAsync(id);
+            Genero genero = await _context.Generos.FindAsync(Dto.Genero);
             if (genero == null) throw new Exception("Genero Não registrado");
 
             List<Artista> art = await _context.Artistas

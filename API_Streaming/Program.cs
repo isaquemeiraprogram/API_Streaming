@@ -21,6 +21,9 @@ builder.Services.AddScoped<MusicaService>();
 builder.Services.AddScoped<MusicaMapper>();
 builder.Services.AddScoped<GeneroServise>();
 builder.Services.AddScoped<GeneroMapper>();
+builder.Services.AddScoped<ArtistaService>();
+builder.Services.AddScoped<ArtistaMapper>();
+
 
 var app = builder.Build();
 

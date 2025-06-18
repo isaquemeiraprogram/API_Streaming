@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\InterfaceServices\**" />
+    <Content Remove="Services\InterfaceServices\**" />
+    <EmbeddedResource Remove="Services\InterfaceServices\**" />
+    <None Remove="Services\InterfaceServices\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Controllers\WeatherForecastController.cs" />
     <Compile Remove="Mappers\MusicaMappers.cs" />
     <Compile Remove="WeatherForecast.cs" />

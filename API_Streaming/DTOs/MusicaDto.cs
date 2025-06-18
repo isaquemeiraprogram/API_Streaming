@@ -4,7 +4,6 @@ namespace API_Streaming.DTOs
 {
     public class MusicaDto
     {
-        public Guid Id { get; set; }
         public string Titulo { get; set; }
         public int Duracao { get; set; }
         public Guid Genero { get; set; }

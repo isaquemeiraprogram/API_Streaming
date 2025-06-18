@@ -32,15 +32,16 @@ namespace API_Streaming.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Genero")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<Guid>("GeneroID")
+                        .HasColumnType("char(36)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GeneroID");
 
                     b.ToTable("Artistas");
                 });
@@ -96,6 +97,17 @@ namespace API_Streaming.Migrations
                     b.HasIndex("MusicasId");
 
                     b.ToTable("ArtistaMusica");
+                });
+
+            modelBuilder.Entity("API_Streaming.Models.Artista", b =>
+                {
+                    b.HasOne("API_Streaming.Models.Genero", "Genero")
+                        .WithMany()
+                        .HasForeignKey("GeneroID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Genero");
                 });
 
             modelBuilder.Entity("API_Streaming.Models.Musica", b =>

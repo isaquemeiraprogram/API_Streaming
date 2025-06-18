@@ -6,8 +6,8 @@ namespace API_Streaming.Models
     public class Artista
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Genero { get; set; }
+        public string Nome { get; set; }
+        public Genero Genero { get; set; }
         public string Biografia { get; set; }
 
         [JsonIgnore]

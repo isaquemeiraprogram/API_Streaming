@@ -15,24 +15,6 @@ namespace API_Streaming.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Artistas",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Name = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Genero = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Biografia = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Artistas", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "Generos",
                 columns: table => new
                 {
@@ -43,6 +25,29 @@ namespace API_Streaming.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Generos", x => x.ID);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Artistas",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    Nome = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    GeneroID = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    Biografia = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Artistas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Artistas_Generos_GeneroID",
+                        column: x => x.GeneroID,
+                        principalTable: "Generos",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -97,6 +102,11 @@ namespace API_Streaming.Migrations
                 name: "IX_ArtistaMusica_MusicasId",
                 table: "ArtistaMusica",
                 column: "MusicasId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Artistas_GeneroID",
+                table: "Artistas",
+                column: "GeneroID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Musicas_GeneroID",
